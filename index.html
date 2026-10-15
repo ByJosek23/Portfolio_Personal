@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta property="og:title" content="José Carlos Fernández - Ingeniero Informático">
+        <meta property="og:description" content="Portfolio interactivo de desarrollo software, backend y sistemas.">
+        <meta property="og:image" content="assets/img/profile.png"> <meta property="og:url" content="https://tu-url-de-github.com">
+        <meta property="og:type" content="website">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Portfolio de José Carlos Fernández, estudiante de Ingeniería Informática en la UCLM. Experiencia en desarrollo Backend (Python, Java), Sistemas Distribuidos y Docker.">
+    <meta name="keywords" content="José Carlos Fernández, Ingeniero Informático, Portfolio, Backend Developer, Python, UCLM, Valdepeñas">
+    <meta name="author" content="José Carlos Fernández">
+    <meta name="robots" content="index, follow">
+
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "name": "José Carlos Fernández",
+        "jobTitle": "Estudiante de Ingeniería Informática",
+        "url": "https://josecarlosfdez.github.io/Portfolio/", 
+        "sameAs": [
+            "https://www.linkedin.com/in/josé-carlos-fernández-verdejo-64863b329/",
+            "https://github.com/JoseCarlosFdez"
+        ],
+        "alumniOf": "Universidad de Castilla-La Mancha"
+    }
+    </script>
+        <title>José Carlos Fernández - Portfolio de Ingeniería Informática</title>
+        <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" ... />
+        
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
+        <div class="starter-selection">
+            <div class="starter-btn" onclick="changeTheme('grass')" title="Elige Planta">🍃</div>
+            <div class="starter-btn" onclick="changeTheme('fire')" title="Elige Fuego">🔥</div>
+            <div class="starter-btn" onclick="changeTheme('water')" title="Elige Agua">💧</div>
+        </div>
+        <header class="main-header">
+            <div class="container">
+                <h1 class="logo">Jose Carlos Fernandez</h1>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="#inicio" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+                        <li><a href="#proyectos" class="nav-link"><i class="fas fa-folder-open"></i> Proyectos</a></li>
+                        <li><a href="#habilidades" class="nav-link"><i class="fas fa-laptop-code"></i> Habilidades</a></li>
+                        <li><a href="#formacion" class="nav-link"><i class="fas fa-graduation-cap"></i> Formación</a></li>
+                        <li><a href="#contacto" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section id="inicio" class="hero-section container">
+                <div class="hero-content">
+                    <hgroup>
+                        <h2 class="hero-title">¡Hola! Soy José Carlos.</h2>
+                        <p class="hero-subtitle">Soy <span class="typed-text"></span></p>
+                    </hgroup>
+                    
+                    <img src="assets/img/profile.png" alt="Foto de perfil profesional de José Carlos Fernández" class="profile-pic">
+                    
+                    <p class="bio-text">
+                        Actualmente cursando mis estudios en la prestigiosa <strong>Universidad de Castilla-La Mancha</strong> (desde 2022). 
+                        Mi base académica se complementa con un <strong>Bachillerato Tecnológico</strong>, obtenido en el <em>IES Bernardo de Balbuena</em> (Valdepeñas, Ciudad Real).
+                        Estoy apasionado por el desarrollo de software y la resolución de problemas complejos.
+                    </p>
+                    
+                    <a href="assets/cv/CV_JoseCarlosFernandez.pdf" class="btn primary-btn" download aria-label="Descargar mi Currículum Vitae">
+                        <i class="fas fa-download"></i> Descargar CV
+                    </a>
+                </div>
+            </section>
+            <section class="container" style="text-align: center; margin-top: 2rem; margin-bottom: 2rem;">
+                <h3><i class="fas fa-gamepad"></i> Mi Equipo Pokémon</h3>
+                <div id="poke-team" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 1rem;">
+                    <p>Cargando equipo...</p>
+                </div>
+            </section>
+
+            <section id="proyectos" class="projects-section container">
+                <h2 class="section-title"><i class="fas fa-cubes"></i> Proyectos Destacados</h2>
+                <p class="section-subtitle">Una muestra de mis trabajos más relevantes.</p>
+
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="backend">Backend / Python</button>
+                    <button class="filter-btn" data-filter="web">Web / Frontend</button>
+                    <button class="filter-btn" data-filter="web">GDScript / Godot</button>
+                </div>
+
+                <div class="project-grid" id="projects-container">
+                    </div>
+            </section>
+
+            <section id="habilidades" class="skills-section container">
+                <h2 class="section-title"><i class="fas fa-cogs"></i> Habilidades Técnicas</h2>
+                <p class="section-subtitle">Tecnologías y herramientas que domino.</p>
+
+                <div class="skills-grid"> 
+                    
+                    <div class="skill-group">
+                        <h3><i class="fas fa-code"></i> Lenguajes</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item">Python</li>
+                            <li class="skill-item">Java</li>
+                            <li class="skill-item">C++</li>
+                            <li class="skill-item">JavaScript</li>
+                            <li class="skill-item">PHP</li>
+                            <li class="skill-item">TypeScript</li>
+                            <li class="skill-item">R</li>
+                        </ul>
+                    </div>
+
+            <div class="skill-group">
+                <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">Flask</li>
+                    <li class="skill-item">React</li>
+                    <li class="skill-item">Angular</li>
+                </ul>
+            </div>
+            
+            <div class="skill-group">
+                <h3><i class="fas fa-tools"></i> Herramientas</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">Docker</li>
+                    <li class="skill-item">Git / GitHub</li>
+                </ul>
+            </div>
+
+            <div class="skill-group">
+                <h3><i class="fas fa-cloud"></i> Redes y Cloud</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">Cisco Packet Tracer</li>
+                    <li class="skill-item">SNMP / MIB-II</li>
+                </ul>
+            </div>
+
+        </div> </section>
+
+            <section id="formacion" class="education-section container">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Trayectoria Académica</h2>
+                <p class="section-subtitle">Mi camino formativo.</p>
+
+                <div class="timeline">
+                    <article class="edu-item">
+                        <h3>Grado en Ingeniería Informática</h3>
+                        <p class="institution">Universidad de Castilla-La Mancha</p>
+                        <p class="date">2022 - Actualidad</p>
+                    </article>
+
+                    <article class="edu-item">
+                        <h3>Bachillerato Tecnológico</h3>
+                        <p class="institution">IES Bernardo de Balbuena</p>
+                        <p class="date">Valdepeñas, Ciudad Real</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="contacto" class="contact-section container">
+                <h2 class="section-title"><i class="fas fa-envelope"></i> Contacto</h2>
+                <p class="section-subtitle">¿Hablamos?</p>
+
+                <div class="contact-methods">
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-envelope-open-text"></i>
+                            <strong>Email:</strong> <a href="mailto:jcfernandezv01@gmail.com" class="contact-link">jcfernandezv01@gmail.com</a>
+                        </li>
+                        <li>
+                            <i class="fab fa-linkedin"></i>
+                            <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jos%C3%A9-carlos-fern%C3%A1ndez-verdejo-64863b329/" class="contact-link">Perfil Profesional</a>
+                        </li>
+                        <li>
+                            <i class="fab fa-github"></i>
+                            <strong>GitHub:</strong> <a href="https://github.com/JoseCarlosFdez" target="_blank" class="contact-link">JoseCarlosFdez</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <div class="container">
+                <div class="scroll-sprite-container">
+                    <img id="scroll-reactive-sprite" src="https://img.pokemondb.net/sprites/black-white/normal/pikachu.png" alt="Sprite Reactivo">
+                </div>
+
+                <p>&copy; 2025 José Carlos Fernández | Desarrollador en formación.</p>
+            </div>
+        </footer>
+
+    
+    <button id="escape-rope" onclick="scrollToTop()" title="Usar Cuerda Huida" style="display: none;">
+        <img src="https://img.pokemondb.net/sprites/items/escape-rope.png" alt="Cuerda Huida">
+    </button>
+    
+    <div id="game-toast"></div> <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script>
+        /* =========================================
+        VARIABLES GLOBALES PARA EL SPRITE DEL FOOTER
+        ========================================= */
+        let isScrollingTimer; // Variable para guardar el temporizador
+        const spriteElement = document.getElementById('scroll-reactive-sprite');
+        // URLs de las imágenes (Estática y Corriendo)
+        
+        const spriteStatic = 'https://img.pokemondb.net/sprites/black-white/anim/normal/gengar.gif';
+        const spriteRunning = 'https://img.pokemondb.net/sprites/black-white/anim/normal/gengar.gif';
+        /* =========================================
+           1. CONFIGURACIÓN VISUAL (ScrollReveal & Typed)
+            ========================================= */
+        const sr = ScrollReveal({
+            origin: 'top',
+            distance: '60px',
+            duration: 2500,
+            delay: 400,
+        });
+
+        // Animaciones
+        sr.reveal('.hero-content .profile-pic', {origin: 'top', delay: 500});
+        sr.reveal('.hero-content hgroup', {origin: 'bottom', delay: 600});
+        sr.reveal('.hero-content .bio-text', {origin: 'bottom', delay: 700});
+        sr.reveal('.hero-content .btn', {origin: 'bottom', delay: 800});
+        sr.reveal('.section-title', {origin: 'left', distance: '100px', interval: 100});
+        sr.reveal('.section-subtitle', {origin: 'right', delay: 200});
+        sr.reveal('.project-card', {interval: 200}); 
+        sr.reveal('.skill-group', {interval: 200, origin: 'bottom'});
+        sr.reveal('.timeline', {origin: 'left'});
+        sr.reveal('.contact-methods', {origin: 'bottom'});
+
+        // Texto "Máquina de escribir"
+        const typed = new Typed('.typed-text', {
+            strings: ['Estudiante de Ingeniería.', 'Desarrollador Backend.', 'Entrenador Pokémon.', 'Futuro Ingeniero.'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: true
+        });
+
+        /* =========================================
+           2. LÓGICA DE PROYECTOS (Filtros)
+           ========================================= */
+        const projectsData = [
+            {
+                title: "Laboratorio Sistemas Distribuidos",
+                desc: "Arquitectura de sistemas distribuidos usando Python, Docker e Ice. Microservicios y comunicación.",
+                tech: "Backend",
+                category: "backend",
+                link: "https://github.com/JoseCarlosFdez/Lab_SSDD"
+            },
+            {
+                title: "App Intercambio Pokémon",
+                desc: "Aplicación web para intercambio de cartas. Desarrollo Full Stack enfocado en usabilidad.",
+                tech: "Web / Frontend",
+                category: "web",
+                link: "https://github.com/JoseCarlosFdez/Lab_SSDD"
+            },
+            {
+                title: "Creación de Pokémon (IPOII)",
+                desc: "Diseño y programación de criatura con habilidades propias. Lógica de programación y POO.",
+                tech: "Java / Lógica",
+                category: "backend",
+                link: "https://github.com/JoseCarlosFdez/Corphish_laboratorio_IPOII"
+            },
+            {
+                title: "Creación de videojuego 2D",
+                desc: "Desarrollo de un juego 2D en Godot sencillo.",
+                tech: "GDScript / Godot",
+                category: "web",
+                link: "https://github.com/JoseCarlosFdez/SuperAstroBros"
+            },
+            {
+                title: "Creación app de fetivales (IPO I)",
+                desc: "Desarrollo de una app web para gestión y consulta de festivales musicales.",
+                tech: "Web / Frontend",
+                category: "web",
+                link: "https://github.com/agarcial16/Practica-IPO-I"
+            }
+        ];
+
+        const container = document.getElementById('projects-container');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        function displayProjects(category) {
+            if(!container) return;
+            container.innerHTML = '';
+            const filteredProjects = category === 'all' 
+                ? projectsData 
+                : projectsData.filter(project => project.category === category);
+
+            filteredProjects.forEach(project => {
+                const projectHTML = `
+                    <article class="project-card fade-in">
+                        <h3>${project.title}</h3>
+                        <p>${project.desc}</p>
+                        <div style="margin-bottom: 1rem;">
+                            <span class="skill-item" style="font-size: 0.8rem;">${project.tech}</span>
+                        </div>
+                        <a href="${project.link}" target="_blank" class="btn secondary-btn">
+                            <i class="fab fa-github"></i> Ver en GitHub
+                        </a>
+                    </article>
+                `;
+                container.innerHTML += projectHTML;
+            });
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                displayProjects(e.target.getAttribute('data-filter'));
+            });
+        });
+        
+        // Cargar proyectos al inicio
+        displayProjects('all');
+
+        /* =========================================
+           3. API POKÉMON (Mi Equipo)
+           ========================================= */
+        const teamContainer = document.getElementById('poke-team');
+        const myTeamIds = [472, 655, 94, 745, 724, 681]; 
+
+        async function fetchTeam() {
+            if (!teamContainer) return;
+            teamContainer.innerHTML = ''; 
+            
+            for (const id of myTeamIds) {
+                try {
+                    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+                    const data = await response.json();
+                    
+                    const card = document.createElement('div');
+                    card.style.cssText = "text-align: center; font-size: 0.8rem; animation: fadeIn 1s;";
+                    card.innerHTML = `
+                        <img src="${data.sprites.front_default}" alt="${data.name}" style="width: 96px; image-rendering: pixelated;">
+                        <p style="text-transform: capitalize; font-weight: bold;">${data.name}</p>
+                    `;
+                    teamContainer.appendChild(card);
+                } catch (error) {
+                    console.error("Error capturando pokémon:", error);
+                }
+            }
+        }
+        fetchTeam();
+
+    
+
+        /* =========================================
+           4. CÓDIGO KONAMI (Modo Legendario)
+           ========================================= */
+        const secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let currentSequence = [];
+
+        window.addEventListener('keydown', (e) => {
+            currentSequence.push(e.key);
+            currentSequence.splice(-secretCode.length - 1, currentSequence.length - secretCode.length);
+            if (currentSequence.join('').includes(secretCode.join(''))) {
+                document.body.classList.toggle('legendary-mode');
+                currentSequence = [];
+            }
+        });
+
+        /* =========================================
+           5. THEME SWITCHER (Iniciales)
+           ========================================= */
+        function changeTheme(type) {
+            const root = document.documentElement;
+            if (type === 'grass') root.style.setProperty('--color-primary', '#78C850');
+            else if (type === 'fire') root.style.setProperty('--color-primary', '#F08030');
+            else if (type === 'water') root.style.setProperty('--color-primary', '#6890F0');
+        }
+
+        /* =========================================
+           6. SCROLL (Barra de Progreso + Cuerda Huida)
+           ========================================= */
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        /* =========================================
+           FUNCIÓN ONSCROLL UNIFICADA
+           ========================================= */
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            
+            // 1. Barra de progreso y Pokéball
+            let scrolled = (winScroll / height) * 100;
+            const bar = document.getElementById("pokeBar");
+            const ball = document.querySelector('.pokeball-icon');
+            
+            if(bar) bar.style.width = scrolled + "%";
+            if(ball) ball.style.transform = "rotate(" + winScroll + "deg)";
+            
+            // 2. Mostrar/Ocultar Cuerda Huida
+            const ropeBtn = document.getElementById("escape-rope");
+            if (ropeBtn) {
+                if (winScroll > 300) {
+                    ropeBtn.style.display = "flex";
+                } else {
+                    ropeBtn.style.display = "none";
+                }
+            }
+
+            // 3. SPRITE REACTIVO (Pikachu corre al hacer scroll)
+            if (spriteElement) {
+                // Si estamos haciendo scroll, ponemos el GIF (si no está ya puesto)
+                if (spriteElement.src !== spriteRunning) {
+                    spriteElement.src = spriteRunning;
+                }
+
+                // Reiniciamos el contador cada vez que se detecta movimiento
+                clearTimeout(isScrollingTimer);
+
+                // Si pasan 150ms sin movimiento, volvemos a la imagen estática
+                isScrollingTimer = setTimeout(function() {
+                    spriteElement.src = spriteStatic;
+                }, 150);
+            }
+        };
+    </script>
+</body>
+</html>

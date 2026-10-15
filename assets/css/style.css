@@ -1,0 +1,885 @@
+/* --- 1. CONFIGURACIÓN BÁSICA (RESET Y FUENTES) --- */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ajuste opcional para que el menú fijo no tape el título de la sección al bajar */
+section {
+    scroll-margin-top: 80px; /* Ajusta este valor según la altura de tu menú header */
+}
+:root {
+    /* Paleta de Colores Profesional */
+    --color-primary: #007bff; /* Azul corporativo */
+    --color-secondary: #6c757d; /* Gris para acentos */
+    --color-dark: #212529; /* Negro para textos principales */
+    --color-light: #f8f9fa; /* Fondo claro */
+    --color-white: #ffffff;
+    
+    /* Tipografía */
+    --font-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    
+    /* Espaciado */
+    --spacing-md: 1.5rem;
+    --spacing-lg: 3rem;
+}
+
+/* Reset básico para mejor consistencia entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--color-dark);
+    background-color: var(--color-light);
+    transition: background-color 0.3s;
+    cursor: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'), auto;
+    background-color: #f8f9fa;
+    background-image: 
+        linear-gradient(#e8e8e8 1px, transparent 1px),
+        linear-gradient(90deg, #e8e8e8 1px, transparent 1px);
+    background-size: 40px 40px; /* Tamaño de la cuadrícula */
+    background-position: center top;
+}
+a, button, .btn, .profile-pic, .skill-item {
+    cursor: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png'), pointer;
+}
+
+/* Contenedor centralizado para ancho máximo */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+
+/* --- 2. ENCABEZADO Y NAVEGACIÓN (HEADER) --- */
+
+.main-header {
+    background-color: var(--color-white);
+    border-bottom: 3px solid var(--color-primary); /* Línea de acento */
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    text-transform: uppercase;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--color-secondary);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.nav-link i {
+    margin-right: 0.4rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+
+/* --- 3. SECCIÓN HERO (PRESENTACIÓN PRINCIPAL) --- */
+
+.hero-section {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Estilo Trainer Card */
+    background-color: #f2f2f2;
+    background-image: linear-gradient(135deg, #ffffff 25%, transparent 25%), 
+                      linear-gradient(225deg, #ffffff 25%, transparent 25%), 
+                      linear-gradient(45deg, #ffffff 25%, transparent 25%), 
+                      linear-gradient(315deg, #ffffff 25%, transparent 25%);
+    background-position: 10px 0, 10px 0, 0 0, 0 0;
+    background-size: 20px 20px;
+    background-repeat: repeat;
+    
+    border: 4px solid var(--color-dark);
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.2); /* Sombra dura estilo retro */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* --- FOTO DE PERFIL (CÍRCULO PERFECTO) --- */
+.profile-pic {
+    width: 180px;           /* Tamaño fijo */
+    height: 180px;          /* Misma altura para que sea cuadrado/circular */
+    object-fit: cover;      /* Recorta la imagen para llenar el círculo sin deformarla */
+    aspect-ratio: 1 / 1;    /* Asegura proporción 1:1 en navegadores modernos */
+    border-radius: 50%;     /* La hace redonda */
+    
+    /* Estética */
+    border: 5px solid var(--color-white);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: var(--spacing-md);
+    
+    /* Animaciones */
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+/* Mantener la animación de "captura" al pasar el ratón */
+.profile-pic:hover {
+    border-color: #ff0000; /* Borde rojo al pasar el ratón */
+    animation: catchShake 1.25s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes catchShake {
+  10%, 90% { transform: translate3d(-1px, 0, 0) rotate(-10deg); }
+  20%, 80% { transform: translate3d(2px, 0, 0) rotate(10deg); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0) rotate(-10deg); }
+  40%, 60% { transform: translate3d(4px, 0, 0) rotate(10deg); }
+}
+
+
+.hero-title {
+    font-size: 2.8rem;
+    color: var(--color-dark);
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    font-weight: 300;
+    margin-bottom: var(--spacing-md);
+}
+
+.bio-text {
+    max-width: 700px;
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-lg);
+    color: #495057; /* Un gris oscuro para buen contraste */
+}
+
+/* Énfasis en el texto */
+.bio-text strong {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+
+/* --- 4. BOTONES (CTAs) --- */
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.primary-btn {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: 2px solid var(--color-primary);
+}
+
+.primary-btn:hover {
+    background-color: #0056b3; /* Un azul más oscuro al pasar el ratón */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn i {
+    margin-right: 0.5rem;
+}
+
+
+/* --- 5. PIE DE PÁGINA (FOOTER) --- */
+
+.main-footer {
+    background-color: var(--color-dark);
+    color: var(--color-secondary);
+    padding: 1.5rem 0;
+    text-align: center;
+    margin-top: var(--spacing-lg); /* Espacio al final de la página */
+}
+
+.main-footer p {
+    font-size: 0.9rem;
+}
+.footer-runner {
+    width: 70px; 
+    top: -55px;
+}
+
+/* --- ESTILOS GENERALES DE SECCIONES (Títulos y Separadores) --- */
+.section-title {
+    font-size: 2.2rem;
+    color: var(--color-dark);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    padding-top: var(--spacing-lg); /* Espacio arriba para anclas */
+}
+
+.section-title i {
+    color: var(--color-primary);
+    margin-right: 0.5rem;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-secondary);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.separator-bar {
+    height: 1px;
+    width: 100px;
+    background-color: #dee2e6;
+    margin: 4rem auto; /* Centrado y con espacio vertical */
+}
+
+/* --- ESTILOS DE PROYECTOS --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    padding-bottom: var(--spacing-lg);
+}
+
+.project-card {
+    background-color: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 4px solid var(--color-primary);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.project-card h3 {
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.project-card p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.project-card .secondary-btn {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    text-transform: none;
+}
+
+.project-card .secondary-btn:hover {
+    background-color: #5a6268;
+}
+
+/* --- HABILIDADES (NUEVO DISEÑO DE TARJETAS Y ETIQUETAS) --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.skill-group {
+    background-color: var(--color-white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.skill-group:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.skill-group h3 {
+    font-size: 1.25rem;
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.skill-group h3 i {
+    color: var(--color-primary);
+    background: #e7f1ff;
+    padding: 8px;
+    border-radius: 50%;
+    font-size: 0.9em;
+}
+
+.skill-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Estilo base tipo "Normal" para todas las skills */
+.skill-item {
+    background-color: #A8A77A; /* Color del tipo Normal */
+    color: white;
+    padding: 4px 12px;
+    border-radius: 4px; /* Un poco más cuadrado como en los juegos */
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase; /* Todo en mayúsculas */
+    letter-spacing: 1px;
+    border: 1px solid rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.3); /* Sombra en el texto para legibilidad */
+    transition: all 0.2s;
+    display: inline-block; /* Asegura que se comporten como bloques */
+}
+
+.skill-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    filter: brightness(1.1); /* Brilla al pasar el ratón */
+}
+
+/* --- ESTILOS DE FORMACIÓN (TIMELINE) --- */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: var(--color-primary);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+.edu-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.edu-item:nth-child(odd) { left: 0; text-align: right; }
+.edu-item:nth-child(even) { left: 50%; }
+
+.edu-item::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    right: -7px;
+    background-color: var(--color-white);
+    border: 3px solid var(--color-primary);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.edu-item:nth-child(even)::after { left: -8px; }
+
+.edu-item h3 { color: var(--color-primary); font-size: 1.3rem; }
+.institution { font-weight: 600; color: var(--color-dark); }
+.date { color: var(--color-secondary); font-style: italic; font-size: 0.9rem; }
+
+/* --- ESTILOS DE CONTACTO --- */
+.contact-methods {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.contact-list { list-style: none; padding-left: 0; }
+.contact-list li {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px dashed #e9ecef;
+    padding-bottom: 0.8rem;
+}
+.contact-list li i {
+    color: var(--color-primary);
+    margin-right: 0.8rem;
+    font-size: 1.3rem;
+    width: 20px;
+}
+.contact-link {
+    color: var(--color-dark);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+.contact-link:hover { color: var(--color-primary); }
+
+/* --- ESTILOS DE LOS FILTROS DE PROYECTOS --- */
+.project-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: var(--font-primary);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+
+/* --- 6. RESPONSIVE (Móviles) --- */
+
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+    }
+
+    .logo {
+        margin-bottom: 1rem;
+    }
+
+    .nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.7rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .bio-text {
+        font-size: 1rem;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+
+}  
+.pokemon-walk-container {
+    width: 100%;
+    overflow: hidden; /* Para que no se salga de la pantalla */
+    margin-bottom: 10px;
+    position: relative;
+    height: 50px; /* Altura suficiente para el sprite */
+}
+
+.pixel-mon {
+    position: absolute;
+    left: -50px; /* Empieza fuera de la pantalla */
+    animation: walkAcross 15s linear infinite; /* Tarda 15s en cruzar */
+}
+
+@keyframes walkAcross {
+    0% { left: -50px; transform: scaleX(1); } /* Mira a la derecha */
+    45% { left: 100%; transform: scaleX(1); } /* Llega al final */
+    50% { left: 100%; transform: scaleX(-1); } /* Se da la vuelta (espejo) */
+    95% { left: -50px; transform: scaleX(-1); } /* Vuelve al inicio */
+    100% { left: -50px; transform: scaleX(1); } /* Se gira de nuevo */
+}
+/* --- ESTILOS DEL MODO LEGENDARIO (SECRET CODE) --- */
+
+/* Cuando el body tiene la clase 'legendary-mode' */
+body.legendary-mode {
+    /* Opción Mewtwo */
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
+                url('https://i.gifer.com/origin/28/2860d2d8c3a1141a5c6679d052b19532_w200.gif');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: #f0f0f0;
+}
+
+/* Cambiamos las cajas blancas a cajas oscuras con borde dorado */
+body.legendary-mode .main-header,
+body.legendary-mode .project-card,
+body.legendary-mode .skill-group,
+body.legendary-mode .edu-item,
+body.legendary-mode .contact-methods,
+body.legendary-mode .main-footer {
+    background-color: rgba(30, 30, 30, 0.95); /* Gris muy oscuro casi negro */
+    color: #e0e0e0;
+    border-color: #d4af37; /* Borde Dorado */
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); /* Resplandor dorado */
+}
+
+/* Ajustes de texto específicos para el modo oscuro */
+body.legendary-mode .hero-title,
+body.legendary-mode .section-title,
+body.legendary-mode .logo {
+    color: #d4af37; /* Títulos dorados */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+body.legendary-mode .hero-subtitle,
+body.legendary-mode .bio-text {
+    color: #cccccc;
+}
+
+/* Ajuste de enlaces */
+body.legendary-mode a {
+    color: #76c7c0; /* Un color cian que se lee bien sobre negro */
+}
+/* Selector de Iniciales */
+.starter-selection {
+    position: fixed;
+    top: 100px; /* Debajo del header */
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.starter-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    background: white;
+    border: 2px solid #ddd;
+}
+
+.starter-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Notificación estilo Juego */
+#game-toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    border: 2px solid #fff;
+    font-family: 'Courier New', monospace; /* Fuente retro */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* ======================================================
+   NUEVOS ESTILOS POKÉMON (TIPOGRAFÍA Y CAJA DE BATALLA)
+   ====================================================== */
+
+/* 1. TIPOGRAFÍA RETRO PARA TÍTULOS */
+.logo, .section-title, .skill-group h3 {
+    font-family: 'Press Start 2P', cursive; /* Fuente pixelada */
+    letter-spacing: -1px; /* Letras un poco más juntas */
+}
+
+/* Ajustes específicos para el Logo */
+.logo {
+    font-size: 1.1rem; /* Un poco más pequeño porque esta fuente es grande */
+    color: var(--color-primary); 
+    text-shadow: 2px 2px 0px #000; /* Sombra negra sólida */
+    line-height: 1.5;
+}
+
+/* Ajustes para los títulos de sección */
+.section-title {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+/* Ajustes para los títulos de las habilidades */
+.skill-group h3 {
+    font-size: 0.9rem; /* Más pequeño para que quepa bien */
+}
+
+
+/* 2. CAJA DE DIÁLOGO DE BATALLA (SECCIÓN CONTACTO) */
+/* Esto sobreescribirá tu estilo anterior de .contact-methods */
+.contact-methods {
+    max-width: 650px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    
+    /* BORDES ESTILO GAMEBOY */
+    border: 4px solid #505050;       /* Borde gris oscuro */
+    outline: 4px solid #f8f9fa;      /* Hueco (color del fondo de la web) */
+    box-shadow: 
+        0 0 0 8px #505050,           /* Segundo borde gris */
+        0 10px 20px rgba(0,0,0,0.2); /* Sombra suave */
+        
+    border-radius: 4px;
+    position: relative;
+}
+
+/* El triangulito rojo animado abajo a la derecha */
+.contact-methods::after {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #cc0000; /* Triángulo rojo */
+    animation: bounce 1s infinite;
+}
+
+/* Animación del triangulito */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+}
+
+#escape-rope {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background: white;
+    border: 2px solid #505050;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    align-items: center;
+    justify-content: center;
+}
+
+#escape-rope:hover {
+    transform: scale(1.1) translateY(-3px);
+    background-color: #f0f0f0;
+}
+
+#escape-rope img {
+    width: 30px;
+}
+/* --- CORRECCIÓN DE HABILIDADES EN MODO LEGENDARIO --- */
+
+/* 1. Títulos de las categorías (Lenguajes, Frameworks...) */
+body.legendary-mode .skill-group h3 {
+    color: #d4af37; /* Color Dorado */
+    border-bottom-color: #d4af37; /* Línea inferior dorada */
+    text-shadow: 2px 2px 0px #000; /* Sombra para legibilidad */
+}
+
+/* 2. El círculo del icono junto al título */
+body.legendary-mode .skill-group h3 i {
+    background-color: #333; /* Fondo oscuro para el icono */
+    color: #d4af37; /* Icono dorado */
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5); /* Pequeño brillo */
+}
+
+/* 3. Las etiquetas de habilidades (Python, Java...) */
+body.legendary-mode .skill-item {
+    background-color: #222; /* Fondo casi negro */
+    color: #d4af37; /* Texto Dorado */
+    border: 1px solid #d4af37; /* Borde fino dorado */
+    
+    /* Efecto de resplandor (Glow) */
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.3); 
+    text-shadow: none; /* Quitamos la sombra de texto anterior */
+}
+
+/* Efecto al pasar el ratón por las habilidades en modo legendario */
+body.legendary-mode .skill-item:hover {
+    background-color: #d4af37; /* Se vuelve dorado sólido */
+    color: #000; /* Texto negro */
+    transform: scale(1.1); /* Crece un poco más */
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.8); /* Brillo intenso */
+}
+/* --- OCULTAR SELECTOR DE INICIALES EN MODO LEGENDARIO --- */
+body.legendary-mode .starter-selection {
+    display: none !important; /* Desaparece por completo */
+    /* O si prefieres una animación suave, usa esto en su lugar: */
+    /* opacity: 0; pointer-events: none; transition: opacity 0.5s; */
+}
+
+/* --- SPRITE DEL FOOTER REACTIVO AL SCROLL (MODIFICADO PARA GENGAR) --- */
+.scroll-sprite-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Alinea los pies al fondo */
+    height: 110px; /* Aumentamos la altura del contenedor (antes 60px) */
+    margin-bottom: -10px; /* Un pequeño ajuste para pegarlo más al texto */
+    overflow: visible; /* Importante: permite que sobresalga si es necesario */
+}
+
+#scroll-reactive-sprite {
+    width: auto;
+    height: 96px; /* EL DOBLE de grande (antes 48px) */
+    image-rendering: pixelated; /* Mantiene los píxeles nítidos al escalar */
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3)); /* Sombra para darle profundidad */
+    transition: opacity 0.1s ease-in-out;
+    padding-bottom: 5px; /* Espacio para que no toque las letras */
+}
+/* --- ANIMACIÓN DE LEVITACIÓN PARA GENGAR --- */
+@keyframes ghostFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); } /* Sube 10px */
+    100% { transform: translateY(0px); }
+}
+
+/* Aplicamos la animación a la imagen de Gengar */
+#scroll-reactive-sprite {
+    /* ... mantenemos los estilos anteriores ... */
+    width: auto;
+    height: 96px; 
+    image-rendering: pixelated;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
+    transition: opacity 0.1s ease-in-out;
+    padding-bottom: 5px;
+
+    /* NUEVO: Añadimos la levitación infinita */
+    animation: ghostFloat 3s ease-in-out infinite;
+}
+
+/* 1. LA TARJETA (Fondo): Quitamos el zig-zag blanco y la ponemos negra */
+body.legendary-mode .hero-content {
+    background-image: none !important; /* Quita el patrón de zig-zag */
+    background-color: rgba(20, 20, 20, 0.95) !important; /* Fondo negro semitransparente */
+    border-color: #d4af37; /* Borde dorado */
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); /* Resplandor dorado */
+}
+
+/* 2. EL SUBTÍTULO ("Soy...") */
+body.legendary-mode .hero-subtitle {
+    color: #ffffff !important; /* La parte estática "Soy" en blanco puro */
+    text-shadow: 1px 1px 2px #000; /* Sombra negra para que se lea siempre */
+}
+
+/* 3. EL TEXTO QUE CAMBIA ("Futuro Ingeniero", "Backend Developer"...) */
+body.legendary-mode .typed-text {
+    color: #ffd700 !important; /* DORADO BRILLANTE */
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); /* Efecto neón/brillo */
+}
+
+/* 4. EL PÁRRAFO GRANDE ("Actualmente cursando...") */
+body.legendary-mode .bio-text {
+    color: #eeeeee !important; /* Blanco casi puro */
+    text-shadow: 1px 1px 1px #000;
+}
+
+/* 5. LAS PALABRAS EN NEGRITA (strong) dentro del texto */
+body.legendary-mode .bio-text strong {
+    color: #ffd700 !important; /* Dorado */
+}
+
+/* 6. LOS ENLACES AZULES (Universidad, IES...) para que se vean sobre negro */
+body.legendary-mode .bio-text a {
+    color: #00ffff !important; /* Cian Eléctrico (muy legible sobre negro) */
+    text-decoration: underline;
+}
+
+/* Efecto hover en los enlaces del texto */
+body.legendary-mode .bio-text a:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #00ffff;
+}
+
+/* 1. MODO NORMAL (Claro) */
+/* Esto asegura que se vea bien en el fondo blanco */
+.institution {
+    color: #444; /* Gris oscuro sólido */
+    font-weight: 700; /* Un poco más negrita */
+}
+
+/* 2. MODO LEGENDARIO (Oscuro) - ¡AQUÍ ESTÁ EL ARREGLO! */
+body.legendary-mode .institution {
+    color: #e0e0e0 !important; /* Blanco plata brillante */
+    text-shadow: 1px 1px 2px #000; /* Sombra negra para contraste */
+    letter-spacing: 0.5px;
+}
+
+/* Opcional: Si quieres que la fecha también se vea mejor en oscuro */
+body.legendary-mode .date {
+    color: #aaaaaa !important; /* Gris claro */
+}
